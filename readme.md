@@ -12,3 +12,6 @@ This is a Node project employing the following modules:
 - [Lodash](https://www.npmjs.com/package/lodash)
 - [Request](https://www.npmjs.com/package/request)
 - [Multer](https://www.npmjs.com/package/multer)
+
+Please note, it's necessary to install the TypeScript module corresponding to each of the above NPM packages using the following command.
+> 'npm i @types/`module-name`'.
