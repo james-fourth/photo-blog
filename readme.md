@@ -5,10 +5,10 @@ This is my first TypeScript project. It's an iteration of a blog project I built
 ## Getting Started
 
 This is a Node project employing the following modules: 
-- Express
-- EJS
-- MongoDB
-- Mongoose
-- Lodash
-- Request
-- Multer
+- [Express](https://www.npmjs.com/package/express)
+- [EJS](https://www.npmjs.com/package/ejs)
+- [MongoDB](https://www.mongodb.com)
+- [Mongoose](https://www.npmjs.com/package/mongoose)
+- [Lodash](https://www.npmjs.com/package/lodash)
+- [Request](https://www.npmjs.com/package/request)
+- [Multer](https://www.npmjs.com/package/multer)
