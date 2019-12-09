@@ -14,4 +14,4 @@ This is a Node project employing the following modules:
 - [Multer](https://www.npmjs.com/package/multer)
 
 Please note, it's necessary to install the TypeScript module corresponding to each of the above NPM packages using the following command.
-> 'npm i @types/`module-name`'.
+> npm i @types/`module-name`.
