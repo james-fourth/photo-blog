@@ -1,0 +1,21 @@
+<%- include('partials/header.ejs'); %>
+        <title>My Photo Blog</title>
+    </head>
+    <body>
+        <form action="/submit">
+            <div class=field-with-label>
+                <label for="image">Choose an image to share</label>
+                <input type="file" name="image" class="field">
+            </div>
+            <div class=field-with-label>
+                <label for="title">What would you like to title this post?</label>
+                <input type="text" name="title" class="field">
+            </div>
+            <div class=field-with-label>
+                <label for="content">What do you want to say?</label>
+                <textarea name="content" cols="30" rows="10" class="field"></textarea>
+            </div>
+            <button type="submit">Upload</button>
+        </form>
+    </body>
+<%- include('partials/footer.ejs'); %>

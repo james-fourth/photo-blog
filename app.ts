@@ -9,9 +9,15 @@ const app: express.Application = express();
 
 app.set("view engine", "ejs");
 
-app.get("/", function(req: any, res: any) {
-    res.render("index");
+app.use(express.static('public'));
+
+app.get("/new-post", function(req: any, res: any) {
+    res.render("new-post");
 });
+
+app.post("/new-post", function(req: any, res: any) {
+    
+})
 
 app.listen(3000, function():void {
     console.log("Server is listening on 3000")

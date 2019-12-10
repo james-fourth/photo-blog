@@ -1,0 +1,14 @@
+label {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
+
+.field-with-label {
+    display: block;
+    margin: auto;
+}
+
+.field {
+    margin-left: 75px
+}
