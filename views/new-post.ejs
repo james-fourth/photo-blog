@@ -1,8 +1,8 @@
 <%- include('partials/header.ejs'); %>
-        <title>My Photo Blog</title>
+        <title>Photo upload</title>
     </head>
     <body>
-        <form action="/submit">
+        <form action="/new-post" method="post" enctype="multipart/form-data">
             <div class=field-with-label>
                 <label for="image">Choose an image to share</label>
                 <input type="file" name="image" class="field">

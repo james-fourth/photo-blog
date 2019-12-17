@@ -102,3 +102,9 @@ dist
 
 # TernJS port file
 .tern-port
+
+#Multer storage folder
+storage/
+
+#Apple directory configuration
+.DS_store
