@@ -17,7 +17,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true})
+mongoose.connect('mongodb://localhost:27017/blogDB', {useNewUrlParser: true, useUnifiedTopology: true})
 
 const postSchema = new mongoose.Schema({
 title: String,
@@ -42,8 +42,17 @@ app.get("/new-post", function(req: any, res: any) {
     res.render("new-post");
 });
 
+app.get("/posts/:postId", function(req: any, res: any) {
+    Post.findOne({_id: req.params.postId}, function(err, post) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("post", {post: post})
+        }
+    })
+});
+
 app.post("/new-post", upload.single('image'),function(req: any, res: any) {
-    // console.log(req.file.path);
     const title: string = req.body.title;
     const textCon: string = req.body.content;
     const imageLoc: string = req.file.path

@@ -14,7 +14,7 @@ var upload = multer_1.default({ dest: "storage/" });
 app.set("view engine", "ejs");
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static('public'));
-mongoose_1.default.connect('mongodb://localhost:27017/blogDB', { useNewUrlParser: true });
+mongoose_1.default.connect('mongodb://localhost:27017/blogDB', { useNewUrlParser: true, useUnifiedTopology: true });
 var postSchema = new mongoose_1.default.Schema({
     title: String,
     content: String,
@@ -35,8 +35,17 @@ app.get("/", function (req, res) {
 app.get("/new-post", function (req, res) {
     res.render("new-post");
 });
+app.get("/posts/:postId", function (req, res) {
+    Post.findOne({ _id: req.params.postId }, function (err, post) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("post", { post: post });
+        }
+    });
+});
 app.post("/new-post", upload.single('image'), function (req, res) {
-    // console.log(req.file.path);
     var title = req.body.title;
     var textCon = req.body.content;
     var imageLoc = req.file.path;
