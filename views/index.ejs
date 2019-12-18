@@ -4,6 +4,14 @@
 <body>
     <h1>Welcome to my blog!</h1>
     <h2>Posts</h2>
+    <ul>
+        <% posts.forEach(function(post) { %>
+            <li>
+                <a href=""><%= post.title %></a>
+            </li>
+        <% }) %>
+        
+    </ul>
     
 </body>
 <%- include("partials/footer.ejs") %>

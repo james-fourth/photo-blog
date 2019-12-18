@@ -5,8 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var fs_1 = __importDefault(require("fs"));
-// import request from 'request';
-// import ejs from 'ejs';
 var multer_1 = __importDefault(require("multer"));
 // import lodash from 'lodash';
 var mongoose_1 = __importDefault(require("mongoose"));
@@ -25,7 +23,14 @@ var postSchema = new mongoose_1.default.Schema({
 });
 var Post = mongoose_1.default.model("Post", postSchema);
 app.get("/", function (req, res) {
-    res.render("index");
+    Post.find(function (err, posts) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.render("index", { posts: posts });
+        }
+    });
 });
 app.get("/new-post", function (req, res) {
     res.render("new-post");

@@ -1,7 +1,7 @@
 import express from 'express';
 import fs from 'fs';
 // import request from 'request';
-// import ejs from 'ejs';
+import ejs from 'ejs';
 import multer from 'multer';
 import bodyParser from 'body-parser';
 // import lodash from 'lodash';
@@ -29,8 +29,13 @@ timestamp: String
 const Post = mongoose.model("Post", postSchema);
 
 app.get("/", function(req: any, res: any) {
-    
-    res.render("index");
+    Post.find(function(err, posts) {
+        if(err) {
+            console.log(err)
+        } else {
+            res.render("index", {posts: posts})
+        }
+    });
 })
 
 app.get("/new-post", function(req: any, res: any) {
