@@ -46,11 +46,13 @@ app.get("/posts/:postId", function (req, res) {
     });
 });
 app.post("/new-post", upload.single('image'), function (req, res) {
+    var _a, _b, _c;
     var title = req.body.title;
     var textCon = req.body.content;
-    var imageLoc = req.file.path;
-    var imageCon = fs_1.default.createReadStream(req.file.path);
+    var imageLoc = ((_a = req.file) === null || _a === void 0 ? void 0 : _a.filename) + "." + ((_b = req.file) === null || _b === void 0 ? void 0 : _b.mimetype.slice(6));
+    var imageCon = fs_1.default.createReadStream((_c = req.file) === null || _c === void 0 ? void 0 : _c.path);
     function blogPost(imageLocation) {
+        console.log(req.file.mimetype);
         var post = new Post({
             title: title,
             content: textCon,
@@ -58,9 +60,10 @@ app.post("/new-post", upload.single('image'), function (req, res) {
             timestamp: new Date().toISOString(),
         });
         post.save();
+        res.redirect("/");
     }
     s3_addToBucket_1.default("daytuhbuckit", imageLoc, imageCon, blogPost);
-    res.redirect("/");
+    // res.redirect("/");
 });
 app.listen(3000, function () {
     console.log("Server is listening on 3000");

@@ -1,8 +1,7 @@
 <%-include("partials/header.ejs") %>
-    <title><%= post.title %></title>
-</head>
-<body>
+    <a href="/"><- Home</a>
     <h1><%= post.title %></h1>
+    <img src= <%= post.imageLocation %> alt="">
     <p><%= post.content %></p>
 </body>
 <%-include("partials/footer.ejs") %>

@@ -1,13 +1,11 @@
 <%- include("partials/header.ejs") %>
-    <title>My Photo Blog</title>
-</head>
-<body>
-    <h1>Welcome to my blog!</h1>
+    <h1>Simple Blog</h1>
     <h2>Posts</h2>
+    <a href="/new-post">New Post</a>
     <ul>
         <% posts.forEach(function(post) { %>
             <li>
-                <h1><a href="posts/<%= post._id %>"> <%= post.title %></a></h1>
+                <h3><a href="posts/<%= post._id %>"> <%= post.title %></a></h3>
                 <p><%= post.content.substring(0,100) + "..." %></p>
             </li>
         <% }) %>

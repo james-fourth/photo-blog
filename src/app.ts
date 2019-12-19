@@ -55,10 +55,11 @@ app.get("/posts/:postId", function(req: any, res: any) {
 app.post("/new-post", upload.single('image'),function(req: any, res: any) {
     const title: string = req.body.title;
     const textCon: string = req.body.content;
-    const imageLoc: string = req.file.path
-    const imageCon: any = fs.createReadStream(req.file.path);
+    const imageLoc: string = req.file?.filename + "." + req.file?.mimetype.slice(6);
+    const imageCon: any = fs.createReadStream(req.file?.path);
 
     function blogPost(imageLocation: string) {
+        console.log(req.file.mimetype);
         const post: any = new Post({
         title: title,
         content: textCon,
@@ -67,10 +68,11 @@ app.post("/new-post", upload.single('image'),function(req: any, res: any) {
         });
 
         post.save();
+        res.redirect("/");
     }
 
     s3Upload("daytuhbuckit", imageLoc, imageCon, blogPost);
-    res.redirect("/");
+    // res.redirect("/");
 })
 
 app.listen(3000, function():void {
