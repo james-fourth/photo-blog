@@ -1,9 +1,18 @@
+body {
+    background-color: #f9f7f7;
+    color: #112d4e;
+}
+
 h1, h2, footer {
     display: block;
     margin: auto;
     text-align: center;
     padding: 1em;
 
+}
+
+a {
+    color: #3f72af;
 }
 
 label {
